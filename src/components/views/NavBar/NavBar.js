@@ -1,8 +1,14 @@
+import { Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+
 const NavBar = () => {
   return (
-    <div>
-      <h4>NavBar</h4>
-    </div>
+    <Navbar bg="primary" variant="dark" className="justify-content-between p-2 rounded">
+      <Navbar.Brand>Waiter.app</Navbar.Brand>
+      <Nav  >
+        <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+      </Nav>
+    </Navbar>
   );
 };
 

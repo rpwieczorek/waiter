@@ -1,7 +1,11 @@
+import { useParams } from "react-router-dom";
+
 const Table = () => {
+  const params = useParams();
+
   return (
     <div>
-      <h2>TABLE</h2>
+      <h2>TABLE {params.Id}</h2>
     </div>
   );
 };

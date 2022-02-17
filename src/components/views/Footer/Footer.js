@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
-    <div>
-      <h4>Footer</h4>
+    <div  className="d-flex justify-content-center">
+      <p className="text-muted">
+        Copyright &copy; Radek 2022
+      </p>
     </div>
   );
 };
