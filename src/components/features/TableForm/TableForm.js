@@ -24,7 +24,7 @@ const TableForm = props => {
 
   useEffect(() => {
     if(table.id === -1){
-       navigate('/')
+       navigate('/', { replace: true });
      }
   },[]);
 
@@ -65,7 +65,7 @@ const TableForm = props => {
     };
     // console.log(table);
     dispatch(updateTableRequest(table));
-
+    navigate('/', { replace: true });
 };
   return (
     <Form onSubmit={handleUpdate}>
