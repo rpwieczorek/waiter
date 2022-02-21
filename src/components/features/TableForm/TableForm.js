@@ -26,34 +26,33 @@ const TableForm = props => {
     if(table.id === -1){
        navigate('/', { replace: true });
      }
-  },[]);
+  },[table.id]);
 
-  const handleStatusChange = e => {
-    setStatus(e.target.value);
-    if (e.target.value === 'Cleaning' || 'Free') {
+  const handleStatusChange = value => {
+    setStatus(value);
+    if (value === 'Cleaning') {
       setPeopleAmount(0);
     }
-  }
+    else if (value === 'Free') {
+      setPeopleAmount(0);
+    }
+  };
 
-  const handlePeopleAmount = e => {
-    if ((e.target.value <= maxPeopleAmount) && (e.target.value >= 0) && (e.target.value <= 10)){
-      setPeopleAmount(e.target.value);
+  const handlePeopleAmount = value => {
+    if (value <= maxPeopleAmount && value >= 0 && value <= 10){
+      setPeopleAmount(value);
     }  
   };
 
-  const handleMaxPeopleAmount = e => {
-    if ((e.target.value >= 0) && (e.target.value <= 10)){
-      setMaxPeopleAmount(e.target.value);
+  const handleMaxPeopleAmount = value => {
+    if (value >= 0 && value <= 10){
+      setMaxPeopleAmount(value);
     }
     if (peopleAmount > maxPeopleAmount) {
-      setPeopleAmount(e.target.value);
+      setPeopleAmount(value);
     }
   };
 
-  const handleBill = e => {
-    setBill(e.target.value);
-  };
-  
   const handleUpdate = e => {
     e.preventDefault();
     table = {
@@ -74,7 +73,7 @@ const TableForm = props => {
           Status
         </Form.Label>
         <Col sm={2}>
-          <Form.Select value={status} onChange={handleStatusChange}>
+          <Form.Select value={status} onChange={(e) => handleStatusChange(e.target.value)}>
             <option>Reserved</option>
             <option>Busy</option>
             <option>Free</option>
@@ -88,10 +87,10 @@ const TableForm = props => {
           People
         </Form.Label>
         <Col sm={2} className="d-flex flex-row align-items-center">
-          <Form.Control value={peopleAmount} style={{width: '60px'}} onChange={handlePeopleAmount}>
+          <Form.Control value={peopleAmount} style={{width: '60px'}} onChange={(e) => handlePeopleAmount(e.target.value)}>
           </Form.Control>
           <span className="p-2">/</span>
-          <Form.Control  value={maxPeopleAmount} style={{width: '60px'}} onChange={handleMaxPeopleAmount}>
+          <Form.Control  value={maxPeopleAmount} style={{width: '60px'}} onChange={(e) => handleMaxPeopleAmount(e.target.value)}>
           </Form.Control>
         </Col>
       </Form.Group>
@@ -102,7 +101,7 @@ const TableForm = props => {
             Bill
           </Form.Label>
           <Col sm={2} >
-            <Form.Control defaultValue={bill} style={{width: '60px'}} onChange={handleBill}>
+            <Form.Control defaultValue={bill} style={{width: '60px'}} onChange={(e) => setBill(e.target.value)}>
             </Form.Control>
           </Col>
         </Form.Group>)
