@@ -1,1 +1,1 @@
-https://git.heroku.com/waiter-app-rw.git
+https://waiter-app-rw.herokuapp.com/
